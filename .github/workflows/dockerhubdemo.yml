@@ -67,3 +67,8 @@ jobs:
             password: ${{secrets.DOCKERHUB_TOKEN}}
         - name: Build
           run:  docker build -f Dockerfile -t testapp .
+        - name: tags
+          run: docker tag testapp ${{secrets.DOCKERHUB_USERNAME}}/githubactionsrepo:testappv1
+        - name: push
+          run: docker push ${{secrets.DOCKERHUB_USERNAME}}/githubactionsrepo:testappv1
+ 
